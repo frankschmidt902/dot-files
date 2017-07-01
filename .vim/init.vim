@@ -3,12 +3,12 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/fschmidt/.vim/bundles/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/frosty/.config/nvim/bundles/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/fschmidt/.vim/bundles')
-  call dein#begin('/Users/fschmidt/.vim/bundles')
-  call dein#add('/Users/fschmidt/.vim/bundles/repos/github.com/Shougo/dein.vim')
+if dein#load_state('/home/frosty/.config/nvim/bundles')
+  call dein#begin('/home/frosty/.config/nvim/bundles')
+  call dein#add('/home/frosty/.config/nvim/bundles/repos/github.com/Shougo/dein.vim')
   " Add or remove your plugins here:
   call dein#add('leafgarland/typescript-vim')  " ts vi support
   call dein#add('jiangmiao/auto-pairs')  " auto close the fucking brackets 
