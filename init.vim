@@ -3,18 +3,19 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/frosty/.config/nvim/bundles/repos/github.com/Shougo/dein.vim
+set runtimepath+=/Users/fschmidt/.vim/bundles/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/frosty/.config/nvim/bundles')
-  call dein#begin('/home/frosty/.config/nvim/bundles')
-  call dein#add('/home/frosty/.config/nvim/bundles/repos/github.com/Shougo/dein.vim')
+if dein#load_state('/Users/fschmidt/.vim/bundles')
+  call dein#begin('/Users/fschmidt/.vim/bundles')
+  call dein#add('/Users/fschmidt/.vim/bundles/repos/github.com/Shougo/dein.vim')
   " Add or remove your plugins here:
   call dein#add('leafgarland/typescript-vim')  " ts vi support
   call dein#add('jiangmiao/auto-pairs')  " auto close the fucking brackets 
   call dein#add('christoomey/vim-tmux-navigator') " vi and tmux nav
   call dein#add('benmills/vimux') " run commands in vi
-  call dein#add('bling/vim-airline') " bottom nav for vi
+  call dein#add('vim-airline/vim-airline') " bottom nav for vi
+  call dein#add('vim-airline/vim-airline-themes') " airline themes 
   call dein#add('pangloss/vim-javascript') " JS syntax
   call dein#add('cakebaker/scss-syntax.vim') " sccss syntax
   call dein#add('kien/ctrlp.vim') " search for files
@@ -85,6 +86,9 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+" Seet airline theme
+let g:airline_theme='papercolor'
 
 " Open file menu
 nnoremap <Leader>o :CtrlP<CR>
