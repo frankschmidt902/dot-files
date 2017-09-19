@@ -18,8 +18,6 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('vim-airline/vim-airline-themes') " airline themes 
   call dein#add('pangloss/vim-javascript') " JS syntax
   call dein#add('cakebaker/scss-syntax.vim') " sccss syntax
-  "" ./install --all so the interactive script doesn't block
-  " you can check the other command line options  in the install file
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('neomake/neomake') " linting
@@ -90,15 +88,13 @@ map <Leader>vz :VimuxZoomRunner<CR>
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+" FZF
+nnoremap <leader>r :History<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>o :Files<CR>
+
 " Seet airline theme
 let g:airline_theme='papercolor'
-
-" Open file menu
-nnoremap <Leader>o :CtrlP<CR>
-" Open buffer menu
-nnoremap <Leader>b :CtrlPBuffer<CR>
-" Open most recently used files
-nnoremap <Leader>r :CtrlPMRUFiles<CR>
 
 " neoMake run on every write
 autocmd! BufWritePost * Neomake
