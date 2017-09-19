@@ -18,13 +18,16 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('vim-airline/vim-airline-themes') " airline themes 
   call dein#add('pangloss/vim-javascript') " JS syntax
   call dein#add('cakebaker/scss-syntax.vim') " sccss syntax
-  call dein#add('kien/ctrlp.vim') " search for files
+  "" ./install --all so the interactive script doesn't block
+  " you can check the other command line options  in the install file
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('neomake/neomake') " linting
   call dein#add('Valloric/YouCompleteMe', {'merged': 0}) " linting
   call dein#add('sbdchd/neoformat') " prettier linting
 
-call dein#end()
-call dein#save_state()
+  call dein#end()
+  call dein#save_state()
 endif
 
 " Required:
@@ -70,10 +73,10 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
- 
+
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
- 
+
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
