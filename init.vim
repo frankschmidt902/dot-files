@@ -10,19 +10,19 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#begin('/Users/fschmidt/.vim/bundles')
   call dein#add('/Users/fschmidt/.vim/bundles/repos/github.com/Shougo/dein.vim')
   " Add or remove your plugins here:
-  call dein#add('leafgarland/typescript-vim')  " ts vi support
-  call dein#add('jiangmiao/auto-pairs')  " auto close the fucking brackets 
   call dein#add('christoomey/vim-tmux-navigator') " vi and tmux nav
   call dein#add('benmills/vimux') " run commands in vi
   call dein#add('vim-airline/vim-airline') " bottom nav for vi
-  call dein#add('vim-airline/vim-airline-themes') " airline themes 
+  call dein#add('vim-airline/vim-airline-themes') " airline themes
   call dein#add('pangloss/vim-javascript') " JS syntax
+  call dein#add('leafgarland/typescript-vim')  " ts vi support
   call dein#add('cakebaker/scss-syntax.vim') " sccss syntax
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  call dein#add('neomake/neomake') " linting
-  call dein#add('Valloric/YouCompleteMe', {'merged': 0}) " linting
-  call dein#add('sbdchd/neoformat') " prettier linting
+  call dein#add('Valloric/YouCompleteMe') " autocomplete
+  call dein#add('sbdchd/neoformat') "linting
+  call dein#add('jiangmiao/auto-pairs')  "auto close the fucking brackets
+  call dein#add('takac/vim-hardtime')  " VI hardmode to break habbits
 
   call dein#end()
   call dein#save_state()
@@ -62,9 +62,8 @@ if !&sidescrolloff
   set sidescrolloff=5   " Show next 5 columns while side-scrolling.
 endif
 set nostartofline       " Do not jump to first character with page commands.
-
 set number                     " Show current line number
-set relativenumber             " Show relative line numbers
+"set relativenumber             " Show relative line numbers
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
@@ -88,7 +87,7 @@ map <Leader>vz :VimuxZoomRunner<CR>
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
-" FZF
+" fzf
 nnoremap <leader>r :History<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>o :Files<CR>
@@ -96,23 +95,28 @@ nnoremap <leader>o :Files<CR>
 " Seet airline theme
 let g:airline_theme='papercolor'
 
-" neoMake run on every write
-autocmd! BufWritePost * Neomake
-let g:neomake_typescript_enabled_makers = []
+" Enable alignment
+let g:neoformat_basic_format_align = 1
 
-" run NeoForm/Prettier on save
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * Neoformat
-augroup END
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
 
-" " Copy to clipboard
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
+
+" Run all enabled formatters (by default Neoformat stops after the first formatter succeeds)
+let g:neoformat_run_all_formatters = 1
+
+" Neoformat only msg when there is an error
+let g:neoformat_only_msg_on_error = 1
+
+" Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 nnoremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
 
-" " Paste from clipboard
+" Paste from clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
