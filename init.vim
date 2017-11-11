@@ -14,16 +14,10 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('benmills/vimux') " run commands in vi
   call dein#add('vim-airline/vim-airline') " bottom nav for vi
   call dein#add('vim-airline/vim-airline-themes') " airline themes
-  call dein#add('pangloss/vim-javascript') " JS syntax
-  call dein#add('leafgarland/typescript-vim')  " ts vi support
-  call dein#add('cakebaker/scss-syntax.vim') " sccss syntax
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  call dein#add('Valloric/YouCompleteMe') " autocomplete
-  call dein#add('sbdchd/neoformat') "linting
-  call dein#add('jiangmiao/auto-pairs')  "auto close the fucking brackets
-  call dein#add('takac/vim-hardtime')  " VI hardmode to break habbits
-
+  call dein#add('Shougo/deoplete.nvim') " auto complete
+  call dein#add('mhartington/nvim-typescript') " type script support
   call dein#end()
   call dein#save_state()
 endif
@@ -91,6 +85,9 @@ autocmd QuickFixCmdPost    l* nested lwindow
 nnoremap <leader>r :History<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>o :Files<CR>
+
+" Enable deoplete at startup
+let g:deoplete#enable_at_startup = 1
 
 " Seet airline theme
 let g:airline_theme='papercolor'
