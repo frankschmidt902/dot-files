@@ -16,8 +16,13 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('vim-airline/vim-airline-themes') " airline themes
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  call dein#add('Shougo/deoplete.nvim') " auto complete
-  call dein#add('mhartington/nvim-typescript') " type script support
+  call dein#add('Valloric/YouCompleteMe') " auto complete
+  call dein#add('neomake/neomake') " sync run programs
+  call dein#add('leafgarland/typescript-vim') " TS Syntax
+  call dein#add('Quramy/vim-js-pretty-template') " JS template strings syntax
+  call dein#add('Quramy/tsuquyomi') " TS VIM IDE
+  call dein#add('jiangmiao/auto-pairs') " auto complete brackets
+  call dein#add('bdauria/angular-cli.vim') " Angular CLI support
   call dein#end()
   call dein#save_state()
 endif
@@ -57,7 +62,18 @@ if !&sidescrolloff
 endif
 set nostartofline       " Do not jump to first character with page commands.
 set number                     " Show current line number
-"set relativenumber             " Show relative line numbers
+set relativenumber             " Show relative line numbers
+
+" display erros in window
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+"autocmd QuickFixCmdPost [^l]* nested cwindow
+"autocmd QuickFixCmdPost    l* nested lwindow
+setlocal indentkeys+=0. " indent chained method calls (tsLint)
+
+" Load config with TS files
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
@@ -78,34 +94,16 @@ map <Leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
 map <Leader>vz :VimuxZoomRunner<CR>
 
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-
 " fzf
 nnoremap <leader>r :History<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>o :Files<CR>
 
-" Enable deoplete at startup
-let g:deoplete#enable_at_startup = 1
+" When writing a buffer.
+call neomake#configure#automake('w')
 
 " Seet airline theme
 let g:airline_theme='papercolor'
-
-" Enable alignment
-let g:neoformat_basic_format_align = 1
-
-" Enable tab to spaces conversion
-let g:neoformat_basic_format_retab = 1
-
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
-
-" Run all enabled formatters (by default Neoformat stops after the first formatter succeeds)
-let g:neoformat_run_all_formatters = 1
-
-" Neoformat only msg when there is an error
-let g:neoformat_only_msg_on_error = 1
 
 " Copy to clipboard
 vnoremap  <leader>y  "+y
@@ -122,4 +120,3 @@ vnoremap <leader>P "+P
 " persist undos
 set undodir=~/.config/nvim/undodir
 set undofile
-
