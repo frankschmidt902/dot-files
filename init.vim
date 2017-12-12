@@ -17,12 +17,8 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
   call dein#add('Valloric/YouCompleteMe') " auto complete
-  call dein#add('neomake/neomake') " sync run programs
   call dein#add('leafgarland/typescript-vim') " TS Syntax
-  call dein#add('Quramy/vim-js-pretty-template') " JS template strings syntax
-  call dein#add('Quramy/tsuquyomi') " TS VIM IDE
   call dein#add('jiangmiao/auto-pairs') " auto complete brackets
-  call dein#add('bdauria/angular-cli.vim') " Angular CLI support
   call dein#end()
   call dein#save_state()
 endif
@@ -46,8 +42,6 @@ set tabstop=2           " Render TABs using this many spaces.
 set shiftwidth=2        " Indentation amount for < and > commands.
 
 set noerrorbells        " No beeps.
-set modeline            " Enable modeline.
-set linespace=0         " Set line-spacing to minimum.
 set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 
 " More natural splits
@@ -63,17 +57,6 @@ endif
 set nostartofline       " Do not jump to first character with page commands.
 set number                     " Show current line number
 set relativenumber             " Show relative line numbers
-
-" display erros in window
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
-"autocmd QuickFixCmdPost [^l]* nested cwindow
-"autocmd QuickFixCmdPost    l* nested lwindow
-setlocal indentkeys+=0. " indent chained method calls (tsLint)
-
-" Load config with TS files
-autocmd FileType typescript JsPreTmpl html
-autocmd FileType typescript syn clear foldBraces
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
@@ -99,10 +82,7 @@ nnoremap <leader>r :History<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>o :Files<CR>
 
-" When writing a buffer.
-call neomake#configure#automake('w')
-
-" Seet airline theme
+" Set airline theme
 let g:airline_theme='papercolor'
 
 " Copy to clipboard
