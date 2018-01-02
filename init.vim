@@ -14,11 +14,18 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('benmills/vimux') " run commands in vi
   call dein#add('vim-airline/vim-airline') " bottom nav for vi
   call dein#add('vim-airline/vim-airline-themes') " airline themes
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-  call dein#add('Valloric/YouCompleteMe') " auto complete
-  call dein#add('leafgarland/typescript-vim') " TS Syntax
   call dein#add('jiangmiao/auto-pairs') " auto complete brackets
+  call dein#add('brooth/far.vim') " search and replace 
+  call dein#add('Shougo/deoplete.nvim') " dark powered auto complete
+  call dein#add('cloudhead/neovim-fuzzy') " fuzzy finder 
+  call dein#add('mhartington/nvim-typescript') " dein TS support
+  call dein#add('wokalski/autocomplete-flow') " dein JS support
+  call dein#add('Shougo/neosnippet') " snippt support
+  call dein#add('Shougo/neosnippet-snippets') " snippts 
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
   call dein#end()
   call dein#save_state()
 endif
@@ -77,11 +84,6 @@ map <Leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
 map <Leader>vz :VimuxZoomRunner<CR>
 
-" fzf
-nnoremap <leader>r :History<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>o :Files<CR>
-
 " Set airline theme
 let g:airline_theme='papercolor'
 
@@ -96,6 +98,15 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+" Fuzzy! with Leader + p 
+nnoremap <C-p> :FuzzyOpen<CR>
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" Use neosnippt.
+let g:neosnippet#enable_completed_snippet = 1
 
 " persist undos
 set undodir=~/.config/nvim/undodir
