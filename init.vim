@@ -15,17 +15,16 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('vim-airline/vim-airline') " bottom nav for vi
   call dein#add('vim-airline/vim-airline-themes') " airline themes
   call dein#add('jiangmiao/auto-pairs') " auto complete brackets
-  call dein#add('brooth/far.vim') " search and replace 
+  call dein#add('sbdchd/neoformat') " format for prettier
+  call dein#add('brooth/far.vim') " search and replace
   call dein#add('Shougo/deoplete.nvim') " dark powered auto complete
-  call dein#add('cloudhead/neovim-fuzzy') " fuzzy finder 
+  call dein#add('mhartington/nvim-typescript') "TS completion
+  call dein#add('leafgarland/typescript-vim') "TS Highlighting
+  call dein#add('cloudhead/neovim-fuzzy') " fuzzy finder
   call dein#add('mhartington/nvim-typescript') " dein TS support
   call dein#add('wokalski/autocomplete-flow') " dein JS support
   call dein#add('Shougo/neosnippet') " snippt support
-  call dein#add('Shougo/neosnippet-snippets') " snippts 
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
+  call dein#add('Shougo/neosnippet-snippets') " snippts
   call dein#end()
   call dein#save_state()
 endif
@@ -63,8 +62,6 @@ if !&sidescrolloff
 endif
 set nostartofline       " Do not jump to first character with page commands.
 set number                     " Show current line number
-set relativenumber             " Show relative line numbers
-
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -99,14 +96,38 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" Fuzzy! with Leader + p 
+" Fuzzy!
 nnoremap <C-p> :FuzzyOpen<CR>
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
-" Use neosnippt.
-let g:neosnippet#enable_completed_snippet = 1
+" turn off shitty TS indent
+let g:typescript_indent_disable = 1
+
+"Make Neoformat run on save
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
+" Enable alignment
+let g:neoformat_basic_format_align = 1
+
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
+
+" Run all the neo fromat formateers so we get that prettier
+let g:neoformat_run_all_formatters = 1
+
+" only use Prettier on TS since TSFMT is a mess
+let g:neoformat_enabled_typescript = ['prettier']
+
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
 
 " persist undos
 set undodir=~/.config/nvim/undodir
