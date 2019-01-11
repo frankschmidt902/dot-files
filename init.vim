@@ -21,6 +21,7 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('cloudhead/neovim-fuzzy') " fuzzy finder
   call dein#add('jiangmiao/auto-pairs') " auto complete brackets
   call dein#add('digitaltoad/vim-pug') " Pug template syntax
+  call dein#add('posva/vim-vue') " VUE syntax highlighting 
   call dein#end()
   call dein#save_state()
 endif
@@ -104,6 +105,12 @@ augroup END
 let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_enabled_html= ['html-beautify']
 let g:neoformat_enabled_markdown = ['remark'] " only use remark since prettier is anoying for MD
+
+" folding support (za/zc/zo)
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
 
 " persist undos
 set undodir=~/.config/nvim/undodir
