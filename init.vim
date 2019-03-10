@@ -14,6 +14,9 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('Shougo/deoplete.nvim') " dark powered auto complete
   call dein#add('cloudhead/neovim-fuzzy') " fuzzy finder
   call dein#add('jiangmiao/auto-pairs') " auto complete brackets
+  call dein#add('bling/vim-airline') " Airline support
+  call dein#add('godlygeek/tabular') " Tab Formating 
+  call dein#add('airblade/vim-gitgutter') " Git Gutter 
   call dein#add('prettier/vim-prettier', { 'do': 'npm install' }) " Prettier for VI
   call dein#end()
   call dein#save_state()
@@ -79,9 +82,8 @@ tnoremap <Esc> <C-\><C-n>
 " Equalize all the panes
 nnoremap <Leader>eq :new \| :q<cr>
 
-" NeoTerm auto scrolling with output
-let g:neoterm_autoscroll=1
-let g:neoterm_autoinsert=1 
+" Allow mouse control
+set mouse=a
 
 " persist undos
 set undodir=~/.config/nvim/undodir
