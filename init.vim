@@ -10,18 +10,11 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#begin('/Users/fschmidt/.vim/bundles')
   call dein#add('/Users/fschmidt/.vim/bundles/repos/github.com/Shougo/dein.vim')
   " Add or remove your plugins here:
-  call dein#add('christoomey/vim-tmux-navigator') " vi and tmux nav
-  call dein#add('benmills/vimux') " run commands in vi
-  call dein#add('dracula/vim') " dracula color
-  call dein#add('vim-airline/vim-airline') " bottom nav for vi
-  call dein#add('vim-airline/vim-airline-themes') " airline themes
-  call dein#add('sbdchd/neoformat') " format for prettier
-  call dein#add('leafgarland/typescript-vim') " TS Syntax 
+  call dein#add('leafgarland/typescript-vim') " TS Syntax
   call dein#add('Shougo/deoplete.nvim') " dark powered auto complete
   call dein#add('cloudhead/neovim-fuzzy') " fuzzy finder
   call dein#add('jiangmiao/auto-pairs') " auto complete brackets
-  call dein#add('digitaltoad/vim-pug') " Pug template syntax
-  call dein#add('posva/vim-vue') " VUE syntax highlighting 
+  call dein#add('prettier/vim-prettier', { 'do': 'npm install' }) " Prettier for VI
   call dein#end()
   call dein#save_state()
 endif
@@ -29,12 +22,6 @@ endif
 " Required:
 filetype plugin indent on
 syntax enable
-
-set termguicolors " gotta have nice colors in my term
-color dracula
-" Set airline theme
-let g:airline_theme='bubblegum'
-
 
 " Map the leader key to SPACE
 let mapleader="\<SPACE>"
@@ -65,16 +52,6 @@ nmap <silent> <c-l> :wincmd l<CR>
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
 
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-
-" Zoom the tmux runner pane
-map <Leader>vz :VimuxZoomRunner<CR>
-
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -92,25 +69,9 @@ nnoremap <C-p> :FuzzyOpen<CR>
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-"Make Neoformat run on save
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
-
-" only use Prettier on TS since TSFMT is a mess
-let g:neoformat_enabled_typescript = ['prettier']
-let g:neoformat_enabled_html= ['html-beautify']
-let g:neoformat_enabled_markdown = ['remark'] " only use remark since prettier is anoying for MD
-
-" folding support (za/zc/zo)
-augroup vimrc
-  au BufReadPre * setlocal foldmethod=indent
-  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
-augroup END
 
 " persist undos
 set undodir=~/.config/nvim/undodir
