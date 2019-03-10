@@ -73,6 +73,16 @@ let g:deoplete#enable_at_startup = 1
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" To map <Esc> to exit terminal-mode:
+tnoremap <Esc> <C-\><C-n>
+
+" Equalize all the panes
+nnoremap <Leader>eq :new \| :q<cr>
+
+" NeoTerm auto scrolling with output
+let g:neoterm_autoscroll=1
+let g:neoterm_autoinsert=1 
+
 " persist undos
 set undodir=~/.config/nvim/undodir
 set undofile
