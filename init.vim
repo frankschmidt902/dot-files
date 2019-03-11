@@ -17,6 +17,7 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('bling/vim-airline') " Airline support
   call dein#add('godlygeek/tabular') " Tab Formating 
   call dein#add('airblade/vim-gitgutter') " Git Gutter 
+  call dein#add('mhartington/oceanic-next') " Color theme 
   call dein#add('prettier/vim-prettier', { 'do': 'npm install' }) " Prettier for VI
   call dein#end()
   call dein#save_state()
@@ -25,6 +26,12 @@ endif
 " Required:
 filetype plugin indent on
 syntax enable
+
+" Theme
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme OceanicNext
 
 " Map the leader key to SPACE
 let mapleader="\<SPACE>"
