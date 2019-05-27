@@ -18,6 +18,7 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('godlygeek/tabular') " Tab Formating 
   call dein#add('airblade/vim-gitgutter') " Git Gutter 
   call dein#add('mhartington/oceanic-next') " Color theme 
+  call dein#add('vimwiki/vimwiki') " Notes / Wiki
   call dein#add('prettier/vim-prettier', { 'do': 'npm install' }) " Prettier for VI
   call dein#end()
   call dein#save_state()
@@ -53,6 +54,9 @@ set nojoinspaces        " Prevents inserting two spaces after punctuation on a j
 set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
+" Spell Check
+setlocal spell spelllang=en_ca
+
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -77,6 +81,9 @@ vnoremap <leader>P "+P
 " Fuzzy!
 nnoremap <C-p> :FuzzyOpen<CR>
 
+" Set notes directory
+let g:notes_directories = ['~/Documents/Notes']
+
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
@@ -92,6 +99,6 @@ nnoremap <Leader>eq :new \| :q<cr>
 " Allow mouse control
 set mouse=a
 
-" persist undos
+" persist undo
 set undodir=~/.config/nvim/undodir
 set undofile
