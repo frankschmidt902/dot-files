@@ -13,7 +13,9 @@ if dein#load_state('/Users/fschmidt/.vim/bundles')
   call dein#add('leafgarland/typescript-vim') " TS Syntax
   call dein#add('Shougo/deoplete.nvim') " dark powered auto complete
   call dein#add('cloudhead/neovim-fuzzy') " fuzzy finder
+  call dein#add('christoomey/vim-tmux-navigator') " Tmux/Vim motion 
   call dein#add('jiangmiao/auto-pairs') " auto complete brackets
+  call dein#add('posva/vim-vue') " Vue JS syntax for .vue files 
   call dein#add('bling/vim-airline') " Airline support
   call dein#add('godlygeek/tabular') " Tab Formating 
   call dein#add('airblade/vim-gitgutter') " Git Gutter 
