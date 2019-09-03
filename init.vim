@@ -98,6 +98,9 @@ tnoremap <Esc> <C-\><C-n>
 " Equalize all the panes
 nnoremap <Leader>eq :new \| :q<cr>
 
+" Force vue syntax
+autocmd FileType vue syntax sync fromstart
+
 " Allow mouse control
 set mouse=a
 
