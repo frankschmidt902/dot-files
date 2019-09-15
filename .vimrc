@@ -324,6 +324,7 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction 
 
+
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -340,3 +341,13 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plug Plugins 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" Initialize plugin system
+call plug#end()
