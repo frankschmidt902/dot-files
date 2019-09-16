@@ -11,6 +11,7 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -45,6 +46,9 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
+" Enable mouse support
+set mouse=a
+
 "Always show current position
 set ruler
 
@@ -60,6 +64,7 @@ set whichwrap+=<,>,h,l
 
 " Ignore case when searching
 set ignorecase
+
 
 " When searching try to be smart about cases 
 set smartcase
@@ -349,5 +354,15 @@ endfunction
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
+
 " Initialize plugin system
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins Settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+
