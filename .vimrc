@@ -55,6 +55,9 @@ set ruler
 " Height of the command bar
 set cmdheight=2
 
+" Display line numbers
+set number
+
 " A buffer becomes hidden when it is abandoned
 set hid
 
@@ -217,8 +220,8 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers 
 try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
+    set switchbuf=useopen,usetab,newtab
+    set stal=2
 catch
 endtry
 
@@ -247,10 +250,10 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
+    nmap <D-j> <M-j>
+    nmap <D-k> <M-k>
+    vmap <D-j> <M-j>
+    vmap <D-k> <M-k>
 endif
 
 " Delete trailing white space on save, useful for some filetypes ;)
@@ -357,12 +360,34 @@ call plug#begin('~/.vim/plugged')
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+
 " Initialize plugin system
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Inspect runner pane
+
+" vimux -- Inspect runner pane
 map <Leader>vi :VimuxInspectRunner<CR>
 
+" fzf -- Search git files
+nmap <Leader>f :GFiles<CR>
+" fzf -- Search all files
+nmap <Leader>F :Files<CR>
+" fzf -- Search all Open Buffers
+nmap <Leader>b :Buffers<CR>
+" fzf -- Search all Buffer History
+nmap <Leader>h :History<CR>
+" fzf -- Search all lines in current Buffer 
+nmap <Leader>l :BLines<CR>
+" fzf -- Search all lines in loaded Buffers
+nmap <Leader>L :Lines<CR>
+" fzf -- Search all Marked files 
+nmap <Leader>' :Marks<CR>
+" fzf -- Search Vim's help 
+nmap <Leader>H :Helptags!<CR>
