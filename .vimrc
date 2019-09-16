@@ -364,6 +364,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'
 
 " Initialize plugin system
 call plug#end()
