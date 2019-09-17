@@ -357,8 +357,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
-
-" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -367,6 +365,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-surround'
+
+" Manual Plugins
+Plug '~/.vim/plugged/YouCompleteMe'
 
 " Initialize plugin system
 call plug#end()
