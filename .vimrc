@@ -24,7 +24,7 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
@@ -35,7 +35,7 @@ command W w !sudo tee % > /dev/null
 set so=7
 
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -73,23 +73,23 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -111,7 +111,7 @@ endif
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -168,6 +168,9 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" Autoformat on save
+au BufWrite * :Autoformat
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -201,8 +204,8 @@ map <leader>h :bprevious<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -217,7 +220,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -329,7 +332,7 @@ endfunction
 
 function! CmdLine(str)
   call feedkeys(":" . a:str)
-endfunction 
+endfunction
 
 
 function! VisualSelection(direction, extra_filter) range
@@ -350,7 +353,7 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plug Plugins 
+" => Plug Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Specify a directory for plugins
@@ -367,6 +370,7 @@ Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
+Plug 'Chiel92/vim-autoformat'
 
 " Manual Plugins
 Plug '~/.vim/plugged/YouCompleteMe'
@@ -375,7 +379,7 @@ Plug '~/.vim/plugged/YouCompleteMe'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins Settings 
+" => Plugins Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " vimux -- Inspect runner pane
@@ -389,11 +393,11 @@ nmap <Leader>F :Files<CR>
 nmap <Leader>b :Buffers<CR>
 " fzf -- Search all Buffer History
 nmap <Leader>h :History<CR>
-" fzf -- Search all lines in current Buffer 
+" fzf -- Search all lines in current Buffer
 nmap <Leader>l :BLines<CR>
 " fzf -- Search all lines in loaded Buffers
 nmap <Leader>L :Lines<CR>
-" fzf -- Search all Marked files 
+" fzf -- Search all Marked files
 nmap <Leader>' :Marks<CR>
-" fzf -- Search Vim's help 
+" fzf -- Search Vim's help
 nmap <Leader>H :Helptags!<CR>
