@@ -104,8 +104,8 @@ if has("gui_macvim")
   autocmd GUIEnter * set vb t_vb=
 endif
 
-" Add a bit extra margin to the left
-"set foldcolumn=1
+" Tmux/VIM Airline
+let g:tmuxline_powerline_separators = 0"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -118,10 +118,6 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
-try
-  colorscheme desert
-catch
-endtry
 
 set background=dark
 
@@ -362,6 +358,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'dracula/vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -402,3 +400,6 @@ nmap <Leader>L :Lines<CR>
 nmap <Leader>' :Marks<CR>
 " fzf -- Search Vim's help
 nmap <Leader>H :Helptags!<CR>
+
+" airline -- theme
+let g:airline_theme='dracula'
