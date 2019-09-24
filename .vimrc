@@ -370,6 +370,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat'
+Plug 'posva/vim-vue'
 
 " Manual Plugins
 Plug '~/.vim/plugged/YouCompleteMe'
