@@ -208,6 +208,11 @@ let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
+" Indent folding with manual
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=syntax
+  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+augroup END
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -370,7 +375,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat'
-Plug 'posva/vim-vue'
 
 " Manual Plugins
 Plug '~/.vim/plugged/YouCompleteMe'
@@ -404,3 +408,4 @@ nmap <Leader>H :Helptags!<CR>
 
 " airline -- theme
 let g:airline_theme='dracula'
+
