@@ -375,9 +375,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat'
-
-" Manual Plugins
-Plug '~/.vim/plugged/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 call plug#end()
