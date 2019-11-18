@@ -164,6 +164,10 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" Set active split
+set splitbelow
+set splitright
+
 " Autoformat on save
 au BufWrite * :Autoformat
 
