@@ -70,7 +70,7 @@ export FZF_BASE=~/.fzf
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting vi-mode osx git-prompt, zsh)
+plugins=(git osx vi-mode git-prompt zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,6 +99,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tmux="TERM=screen-256color-bce tmux"
+alias vi="vim"
+
+# Startup Scripts
+case "$OSTYPE" in
+  darwin*)
+  ;;
+  linux*) source ~/dot-files/keyboard_binding.sh
+  ;;
+esac
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
