@@ -77,6 +77,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+# export PATH=$PATH:path/to/connectiq-sdk/bin
+export PATH=$PATH:~/Documents/Sdks/connectiq-sdk/bin
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
