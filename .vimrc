@@ -380,6 +380,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'Chiel92/vim-autoformat'
+Plug 'wolfgangmehner/c.vim'
+Plug 'keithluchtel/vim-monkey-c'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
