@@ -37,11 +37,6 @@ set so=7
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-
-" Turn on the Wild menu
-set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -118,7 +113,6 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
-
 set background=dark
 
 " Set extra options when running in GUI mode
@@ -168,9 +162,6 @@ set display+=lastline
 " Set active split
 set splitbelow
 set splitright
-
-" Autoformat on save
-au BufWrite * :Autoformat
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -368,20 +359,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-vinegar'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'arcticicestudio/nord-vim'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-surround'
-Plug 'Chiel92/vim-autoformat'
-Plug 'wolfgangmehner/c.vim'
-Plug 'keithluchtel/vim-monkey-c'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
@@ -411,12 +397,8 @@ nmap <Leader>' :Marks<CR>
 " fzf -- Search Vim's help
 nmap <Leader>H :Helptags!<CR>
 
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-
 " airline -- theme
-let g:airline_theme='dracula'
+let g:airline_theme='nord'
 
 " COC -- use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
