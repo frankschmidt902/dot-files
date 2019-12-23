@@ -10,6 +10,7 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
+set nocompatible
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -107,6 +108,7 @@ let g:tmuxline_powerline_separators = 0"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
+syntax on
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -361,6 +363,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
+Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'arcticicestudio/nord-vim'
