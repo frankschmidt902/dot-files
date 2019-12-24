@@ -364,6 +364,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
+Plug 'vim-syntastic/syntastic'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'arcticicestudio/nord-vim'
@@ -399,6 +400,38 @@ nmap <Leader>L :Lines<CR>
 nmap <Leader>' :Marks<CR>
 " fzf -- Search Vim's help
 nmap <Leader>H :Helptags!<CR>
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['eslint']
+let g:syntastic_vue_checkers = ['eslint']
+
+" Optional support for project eslint configs
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+  let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+  let g:syntastic_typescript_eslint_exec = local_eslint
+  let g:syntastic_vue_eslint_exec = local_eslint
+endif
+
+" Only use JS/HTML/CSS for VUE
+let g:vue_pre_processors = []
+
+" vimwiki -- use markdown
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " airline -- theme
 let g:airline_theme='nord'
