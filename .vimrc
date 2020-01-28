@@ -373,6 +373,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " Initialize plugin system
 call plug#end()
@@ -407,6 +410,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -414,6 +418,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_checkers = ['eslint']
 let g:syntastic_vue_checkers = ['eslint']
+
+" execute eslint with --fix flag
+let g:syntastic_javascript_eslint_args = ['--fix']
 
 " Optional support for project eslint configs
 let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
