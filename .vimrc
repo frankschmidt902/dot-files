@@ -100,8 +100,6 @@ if has("gui_macvim")
   autocmd GUIEnter * set vb t_vb=
 endif
 
-" Tmux/VIM Airline
-let g:tmuxline_powerline_separators = 0"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -372,6 +370,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -442,6 +441,9 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 
 " airline -- theme
 let g:airline_theme='papercolor'
+
+" Tmux/VIM Airline
+let g:tmuxline_powerline_separators = 0
 
 " COC -- use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
