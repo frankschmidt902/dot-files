@@ -441,7 +441,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " airline -- theme
-let g:airline_theme='nord'
+let g:airline_theme='papercolor'
 
 " COC -- use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
