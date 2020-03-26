@@ -48,6 +48,7 @@ else
 endif
 
 " Enable mouse support
+set ttymouse=xterm2
 set mouse=a
 
 "Always show current position
@@ -367,9 +368,9 @@ Plug 'vim-syntastic/syntastic'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'arcticicestudio/nord-vim'
-Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
+Plug 'mattn/emmet-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -403,6 +404,9 @@ nmap <Leader>L :Lines<CR>
 nmap <Leader>' :Marks<CR>
 " fzf -- Search Vim's help
 nmap <Leader>H :Helptags!<CR>
+
+" change emmet leader
+let g:user_emmet_leader_key=','
 
 " Syntastic
 set statusline+=%#warningmsg#
