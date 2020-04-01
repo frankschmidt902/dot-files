@@ -1,16 +1,18 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=10000
+
+" Use persistent history.
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+" set a directory to store the undo history
+set undodir=/tmp/.vim-undo-dir
+set undofile
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-set nocompatible
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -364,7 +366,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
-Plug 'vim-syntastic/syntastic'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'arcticicestudio/nord-vim'
@@ -375,8 +376,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " Initialize plugin system
 call plug#end()
@@ -387,6 +388,9 @@ call plug#end()
 
 " vimux -- Inspect runner pane
 map <Leader>vi :VimuxInspectRunner<CR>
+
+" Fix redraw issue with syntastic
+autocmd VimEnter * nnoremap <silent> <c-j> :TmuxNavigateDown<cr>:redraw!<cr>
 
 " fzf -- Search git files
 nmap <Leader>f :GFiles<CR>
@@ -407,35 +411,6 @@ nmap <Leader>H :Helptags!<CR>
 
 " change emmet leader
 let g:user_emmet_leader_key=','
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_checkers = ['eslint']
-let g:syntastic_vue_checkers = ['eslint']
-
-" execute eslint with --fix flag
-let g:syntastic_javascript_eslint_args = ['--fix']
-
-" Optional support for project eslint configs
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-  let local_eslint = getcwd() . "/" . local_eslint
-endif
-if executable(local_eslint)
-  let g:syntastic_javascript_eslint_exec = local_eslint
-  let g:syntastic_typescript_eslint_exec = local_eslint
-  let g:syntastic_vue_eslint_exec = local_eslint
-endif
 
 " Only use JS/HTML/CSS for VUE
 let g:vue_pre_processors = []
