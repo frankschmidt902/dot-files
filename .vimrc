@@ -369,6 +369,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'arcticicestudio/nord-vim'
+Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
@@ -385,6 +386,17 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Ale - linting (syntax checking and semantic errors)
+
+" Fix JS files with prettier, and then ESLint.
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\}
+
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
 
 " vimux -- Inspect runner pane
 map <Leader>vi :VimuxInspectRunner<CR>
