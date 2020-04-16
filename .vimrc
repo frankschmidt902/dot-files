@@ -137,25 +137,15 @@ set ffs=unix,dos,mac
 ab :white_check_mark: ✅
 ab :zap: ⚡️
 ab :fire: 🔥
+ab :boom: 💥
 ab :bug: 🐛
 ab :ambulance: 🚑
-ab :sparkles: ✨
-ab :pencil:✏️✏️
 ab :rocket: 🚀
 ab :lipstick: 💄
-ab :tada: 🔥
-ab :lock: 🔥
-ab :apple: 🔥
 ab :penguin: 🐧
-ab :checkered_flag: 🏁
 ab :bookmark: 🔖
-ab :rotating_light: 🚨
 ab :construction: 🚧
-ab :recycle: ♻️♻️
-ab :whale: 🐳
-ab :poop:  💩
 ab :ok_hand: 👌
-ab :boom: 💥
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
