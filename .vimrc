@@ -133,6 +133,30 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" Emoji shortcuts
+ab :white_check_mark: ✅
+ab :zap: ⚡️
+ab :fire: 🔥
+ab :bug: 🐛
+ab :ambulance: 🚑
+ab :sparkles: ✨
+ab :pencil:✏️✏️
+ab :rocket: 🚀
+ab :lipstick: 💄
+ab :tada: 🔥
+ab :lock: 🔥
+ab :apple: 🔥
+ab :penguin: 🐧
+ab :checkered_flag: 🏁
+ab :bookmark: 🔖
+ab :rotating_light: 🚨
+ab :construction: 🚧
+ab :recycle: ♻️♻️
+ab :whale: 🐳
+ab :poop:  💩
+ab :ok_hand: 👌
+ab :boom: 💥
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -389,14 +413,20 @@ call plug#end()
 
 " Ale - linting (syntax checking and semantic errors)
 
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+
 " Fix JS files with prettier, and then ESLint.
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier', 'eslint'],
+\   'vue': ['prettier', 'eslint'],
 \}
 
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 " vimux -- Inspect runner pane
 map <Leader>vi :VimuxInspectRunner<CR>
@@ -447,4 +477,3 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-
