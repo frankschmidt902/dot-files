@@ -80,6 +80,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:~/Documents/Sdks/connectiq-sdk/bin
 export PATH=$PATH:/opt/wavebox.io/wavebox
 
+# Stop timeout ( long running commands )
+unset TMOUT
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
