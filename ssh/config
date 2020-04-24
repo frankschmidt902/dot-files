@@ -1,3 +1,5 @@
+IgnoreUnknown AddKeysToAgent,UseKeychain
+
 Host github.ibm.com
   HostName github.ibm.com
   User git
