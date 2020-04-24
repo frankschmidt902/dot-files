@@ -18,6 +18,7 @@ sudo rm -rf ~/.config/kitty > /dev/null 2>&1
 # Allow overriding with files of matching names in the custom-configs dir
 #==============
 ln -sf $dotfiles_dir/.zshrc ~/.zshrc
+ln -sf $dotfiles_dir/ssh/config ~/.ssh/config
 ln -sf $dotfiles_dir/.vimrc ~/.vimrc
 ln -sf $dotfiles_dir/.tmux.conf ~/.tmux.conf
 ln -sf $dotfiles_dir/zsh/zsh_prompt ~/.zsh_prompt
@@ -25,35 +26,40 @@ ln -sf $dotfiles_dir/zsh/zsh_prompt ~/.zsh_prompt
 mkdir -p ~/.config/kitty
 ln -sf $dotfiles_dir/kitty.conf ~/.config/kitty/kitty.conf
 
-sudo apt-get -y install curl
-if type -p curl > /dev/null; then
-    echo "curl Installed" >> $log_file
-else
-    echo "crul FAILED TO INSTALL!!!" >> $log_file
-fi
+git config --global user.email "frankschmidt902@gmail.com"
+git config --global user.name "Frank Schmidt"
 
-sudo apt-get -y install zsh
-if type -p zsh > /dev/null; then
-    echo "zsh Installed" >> $log_file
-else
-    echo "zsh FAILED TO INSTALL!!!" >> $log_file
-fi
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-sudo apt-get install zsh-syntax-highlighting
 sudo apt-get install vim
 sudo apt-get install tmux
 sudo apt-get install kitty
+sudo apt-get install curl
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+installZsh() {
+  sudo apt-get -y install zsh;
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+  sudo apt-get install zsh-syntax-highlighting
+}
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh
+installFzf() {
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+}
 
+
+installNode() {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | zsh;
+  source ~/.zshrc;
+  nvm install node
+}
+
+installPlug() {
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
 
-git config --global user.email "frankschmidt902@gmail.com"
-git config --global user.name "Frank Schmidt"
+installZsh&&
+installFzf&&
+installPlug&&
+installNode
+
 
