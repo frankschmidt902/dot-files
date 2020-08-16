@@ -1,7 +1,7 @@
 git config --global user.email "frankschmidt902@gmail.com"
 git config --global user.name "Frank Schmidt"
 
-sudo apt-get install vim
+sudo apt-get install neovim
 sudo apt-get install tmux
 sudo apt-get install kitty
 sudo apt-get install curl
@@ -33,5 +33,3 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 installFzf&&
 installPlug&&
 installNode
-
-
