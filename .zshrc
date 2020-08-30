@@ -80,6 +80,10 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:~/Documents/Sdks/connectiq-sdk/bin
 export PATH=$PATH:/opt/wavebox.io/wavebox
 
+if [ -d "$HOME/adb-fastboot/platform-tools" ] ; then
+ export PATH="$HOME/adb-fastboot/platform-tools:$PATH"
+fi
+
 # Stop timeout ( long running commands )
 unset TMOUT
 
