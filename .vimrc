@@ -400,6 +400,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+colorscheme nord
 
 " Ale - linting (syntax checking and semantic errors)
 
