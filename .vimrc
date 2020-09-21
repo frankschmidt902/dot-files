@@ -57,7 +57,7 @@ set mouse=a
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " turn hybrid line numbers on
 :set number relativenumber
@@ -408,9 +408,9 @@ let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 
 " Fix JS files with prettier, and then ESLint.
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier', 'eslint'],
-\   'vue': ['prettier', 'eslint'],
+\   'javascript': ['prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
+\   'typescript': ['prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
+\   'vue': ['prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
 \}
 
 " Set this variable to 1 to fix files when you save them.
