@@ -111,14 +111,6 @@ unset TMOUT
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="TERM=screen-256color-bce tmux"
 
-# Startup Scripts
-case "$OSTYPE" in
-  darwin*)
-  ;;
-  linux*) source ~/dot-files/keyboard_binding.sh
-  ;;
-esac
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
