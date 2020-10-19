@@ -111,6 +111,7 @@ unset TMOUT
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias tmux="TERM=screen-256color-bce tmux"
 alias vi="nvim"
+alias dots="cd ~/dot-files && ls -la"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
