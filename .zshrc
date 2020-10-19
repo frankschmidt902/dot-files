@@ -112,6 +112,11 @@ unset TMOUT
 alias tmux="TERM=screen-256color-bce tmux"
 alias vi="nvim"
 alias dots="cd ~/dot-files && ls -la"
+alias wayne="cd ~/Documents/wayne-world && ls -la"
+alias platform="cd ~/Documents/wayne-world/assessment-platform && ls -la"
+alias mra="cd ~/Documents/wayne-world/mra && ls -la"
+alias mra-api="cd ~/Documents/wayne-world/mra-api && ls -la"
+alias la="cd ~/Documents/wayne-world/leadership-academy && ls -la"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
