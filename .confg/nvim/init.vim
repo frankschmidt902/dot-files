@@ -1,1 +1,0 @@
-/home/monolith/.config/nvim/init.vim

@@ -50,8 +50,10 @@ else
 endif
 
 " Enable mouse support
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
 set mouse=a
+endif
 
 "Always show current position
 set ruler
