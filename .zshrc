@@ -129,3 +129,4 @@ if [ -f '/home/meatwad/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home
 if [ -f '/home/meatwad/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/meatwad/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=$PATH:~/.android-sdk-macosx/platform-tools/
