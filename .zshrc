@@ -118,6 +118,7 @@ alias mra="cd ~/Documents/wayne-world/mra && ls -la"
 alias mra-api="cd ~/Documents/wayne-world/mra-api && ls -la"
 alias la="cd ~/Documents/wayne-world/leadership-academy && ls -la"
 alias gbs="cd ~/Documents/wayne-world/gbs && ls -la"
+alias lad="cd ~/Documents/wayne-world/LAD && ls -la"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
