@@ -168,7 +168,7 @@ set expandtab
 set smarttab
 
 " JS/HTML use 2
-au BufNewFile,BufRead *.js, *.html, *.css
+au filetype javascript, html, css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
