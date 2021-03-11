@@ -396,6 +396,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
+Plug 'metakirby5/codi.vim' " live REPL in js,python,node
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',

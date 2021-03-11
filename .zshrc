@@ -121,6 +121,20 @@ alias la="cd ~/Documents/wayne-world/leadership-academy && ls -la"
 alias gbs="cd ~/Documents/wayne-world/gbs && ls -la"
 alias lad="cd ~/Documents/wayne-world/LAD && ls -la"
 
+# Codi
+# Usage: codi [filetype] [filename]
+codi() {
+  local syntax="${1:-python}"
+  shift
+  vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
