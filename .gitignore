@@ -1,0 +1,4 @@
+.ssh/*
+
+# Don't ignore ssh/config
+!.ssh/config
