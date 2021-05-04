@@ -152,3 +152,4 @@ if [ -f '/home/meatwad/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH=$PATH:~/.android-sdk-macosx/platform-tools/
+source /Users/frankschmidt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

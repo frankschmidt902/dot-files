@@ -61,9 +61,9 @@ set ruler
 " Height of the command bar
 set cmdheight=1
 
-" turn hybrid line numbers on
-:set number relativenumber
-:set nu rnu
+" turn on absolute line numbers
+set nu 
+set number
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -151,14 +151,6 @@ ab :construction: 🚧
 ab :ok_hand: 👌
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
@@ -171,14 +163,19 @@ set smarttab
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
+set tabstop=8
+set shiftwidth=2
+set autoindent "Auto indent
+set smartindent "Smart indent
 set wrap "Wrap lines
 set display+=lastline
 
 " Set active split
 set splitbelow
 set splitright
+
+" YAML use 2 space tabs
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -224,6 +221,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+set foldlevelstart=20
 
 " Enable folding with the spacebar
 nnoremap <space> za
@@ -399,11 +397,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'nvie/vim-flake8'
+Plug 'Yggdroot/indentLine'
+Plug 'pedrohdz/vim-yaml-folds'
 Plug 'metakirby5/codi.vim' " live REPL in js,python,node
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " Initialize plugin system
 call plug#end()
@@ -417,11 +414,13 @@ colorscheme nord
 
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 
-" Fix JS files with prettier, and then ESLint.
+let g:ale_linters = {'javascript': ['']}
+
+" Fix JS files with prettier-standard.
 let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
-\   'typescript': ['prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
-\   'vue': ['prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
+\   'javascript': ['standard', 'trim_whitespace', 'remove_trailing_lines'],
+\   'typescript': ['standard', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
+\   'vue': ['standard', 'trim_whitespace', 'remove_trailing_lines'],
 \}
 
 " Set this variable to 1 to fix files when you save them.
@@ -459,9 +458,8 @@ let g:user_emmet_leader_key=','
 " Only use JS/HTML/CSS for VUE
 let g:vue_pre_processors = []
 
-" vimwiki -- use markdown
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-      \ 'syntax': 'markdown', 'ext': '.md'}]
+" YAML indexline plugin use smaller char
+let g:indentLine_char = '⦙'
 
 " airline -- theme
 let g:airline_theme='papercolor'
