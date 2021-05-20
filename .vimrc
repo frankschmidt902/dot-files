@@ -61,9 +61,9 @@ set ruler
 " Height of the command bar
 set cmdheight=1
 
-" turn on absolute line numbers
-set nu 
-set number
+" turn hybrid line numbers on
+set number relativenumber
+set nu rnu
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -385,6 +385,7 @@ Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'lepture/vim-jinja'
 Plug 'bling/vim-airline'
@@ -410,6 +411,9 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme nord
 
+" Ack will use AG
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " Ale - linting (syntax checking and semantic errors)
 
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
@@ -420,7 +424,7 @@ let g:ale_linters = {'javascript': ['']}
 let g:ale_fixers = {
 \   'javascript': ['standard', 'trim_whitespace', 'remove_trailing_lines'],
 \   'typescript': ['standard', 'eslint', 'trim_whitespace', 'remove_trailing_lines'],
-\   'vue': ['standard', 'trim_whitespace', 'remove_trailing_lines'],
+\   'vue': ['standard',  'trim_whitespace', 'remove_trailing_lines'],
 \}
 
 " Set this variable to 1 to fix files when you save them.
@@ -459,7 +463,8 @@ let g:user_emmet_leader_key=','
 let g:vue_pre_processors = []
 
 " YAML indexline plugin use smaller char
-let g:indentLine_char = '⦙'
+
+autocmd FileType yaml setlocal let g:indentLine_char = '⦙'
 
 " airline -- theme
 let g:airline_theme='papercolor'
