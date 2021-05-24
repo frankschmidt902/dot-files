@@ -174,9 +174,6 @@ set display+=lastline
 set splitbelow
 set splitright
 
-" YAML use 2 space tabs
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -411,7 +408,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'nvie/vim-flake8'
 Plug 'Yggdroot/indentLine'
-Plug 'pedrohdz/vim-yaml-folds'
 Plug 'metakirby5/codi.vim' " live REPL in js,python,node
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -473,10 +469,6 @@ let g:user_emmet_leader_key=','
 
 " Only use JS/HTML/CSS for VUE
 let g:vue_pre_processors = []
-
-" YAML indexline plugin use smaller char
-
-autocmd FileType yaml setlocal let g:indentLine_char = '⦙'
 
 " airline -- theme
 let g:airline_theme='papercolor'
